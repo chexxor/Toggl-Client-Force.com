@@ -36,6 +36,14 @@ Authorize the Toggl API endpoint
     List<TogglTimeEntry> togglTimeEntryList = togglClient.getTimeEntries(fromDateToggl, toDateToggl);
 
 
+### Problems?
+
+Three options
+- Let me know by making an issue on GitHub.
+- Fix it yourself and submit a pull request on GitHub.
+- Find some other way to message me on the internet.
+
+
 ### Open Source
 
 Copyright (c) <year> <copyright holders>
