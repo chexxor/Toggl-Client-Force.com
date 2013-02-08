@@ -10,6 +10,14 @@ I wanted to get Toggl data into a Salesforce org, so I created this code to requ
 This API was built to only request a list of time entries from Toggl, but Toggl has a much more [extensive API](https://www.toggl.com/public/api). If you'd like, you can use my code as a reference to request data from other endpoints. If you do, you should send a pull request my way.
 
 
+### Installation
+
+I made an unmanaged package - https://login.salesforce.com/packaging/installPackage.apexp?p0=04tC0000000lN1g
+
+-or-
+
+Download the metadata components from this git repo and deploy to your Salesforce org.
+
 ### Manual configuration
 
 Authorize the Toggl API endpoint
@@ -21,8 +29,8 @@ Authorize the Toggl API endpoint
 
 ### How to Use
 
-	// Choose a "from" day and "to" day
-	Date fromDate = System.today();
+    // Choose a "from" day and "to" day
+    Date fromDate = System.today();
     Date toDate = System.today();
 
     // Then wrap them into a DateTime
