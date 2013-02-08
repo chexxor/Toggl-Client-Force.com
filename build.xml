@@ -1,0 +1,11 @@
+<project name="Metadata for Toggl-Client-Force.com" default="" basedir="." xmlns:sf="antlib:com.salesforce">
+
+	<property environment="env"/>
+
+	<target name="deployPackage">
+
+		<sf:deploy username="username@domain.com" password="YourPass" serverurl="https://test.salesforce.com" deployRoot="src" checkonly="false"/>
+
+	</target>
+
+</project>

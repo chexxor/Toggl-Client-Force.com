@@ -1,0 +1,62 @@
+<apex:page controller="CtlrTogglDemo">
+
+    <apex:form >
+    <apex:pageBlock title="Toggl Time Entries" mode="maindetail">
+        <apex:pageBlockButtons >
+            <apex:commandButton action="{!updateTimeEntries}" value="Update" rerender="timeEntryTable"/>
+        </apex:pageBlockButtons>
+        <apex:pageBlockSection title="Filter Dates">
+            <apex:pageBlockSectionItem >
+                <apex:inputField value="{!fromDate.CloseDate}"/>
+            </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >
+                <apex:inputField value="{!toDate.CloseDate}"/>
+            </apex:pageBlockSectionItem>
+        </apex:pageBlockSection>
+        
+        <apex:pageBlockTable id="timeEntryTable" value="{!togglTimeEntryList}" var="togglTimeEntry">
+            <apex:column headerValue="Description">
+                <apex:outputPanel styleClass="description">
+                    {!togglTimeEntry.description}
+                </apex:outputPanel>
+            </apex:column>
+            <apex:column headerValue="Project Name">
+                <apex:outputPanel styleClass="project_name">
+                    {!togglTimeEntry.project.name}
+                </apex:outputPanel>
+            </apex:column>
+            <apex:column headerValue="Client">
+                <apex:outputPanel styleClass="client">
+                    {!togglTimeEntry.project.clientName}
+                </apex:outputPanel>
+            </apex:column>
+            <apex:column headerValue="Duration">
+                <apex:outputPanel styleClass="duration_cell" layout="inline">
+                    <span class="duration_decimal" onclick="pasteNumberTo(this, 'input', 'hours');">
+                        <apex:outputText value="{!FLOOR(togglTimeEntry.duration / 3600) + ROUND(FLOOR(MOD(togglTimeEntry.duration, 3600) / 60) / 60, 2)}"/>
+                        hrs
+                    </span>
+                    <!--
+                    <div class="duration_human" style="/*display:none;*/" >
+                        <apex:outputText value="{!FLOOR(togglTimeEntry.duration / 3600)} hr"/>
+                        <span>&nbsp;</span>
+                        <apex:outputText value="{!FLOOR(MOD(togglTimeEntry.duration, 3600) / 60)} min"/>
+                    </div>
+                    -->
+                </apex:outputPanel>
+            </apex:column>
+            <apex:column headerValue="Start Time">
+                <apex:outputPanel >
+                    <!--
+                    <apex:outputText value="{0, date, hh:mm}">
+                    -->
+                    <apex:outputText value="{0, date, hh:mm EEE, d MMM}">
+                        <apex:param value="{!togglTimeEntry.startWithoutTimezone}"/>
+                    </apex:outputText>
+                </apex:outputPanel>
+            </apex:column>
+        </apex:pageBlockTable>
+    </apex:pageBlock>
+    </apex:form>
+
+</apex:page>
